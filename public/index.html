@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Index</title>
+    <script src="../src/index.js"></script>
+    <script>
+        function GetFeatures() {
+            var Version = document.querySelector("select").value;
+            switch (Version) {
+                case "ver1":
+                    document.querySelector("#features").innerHTML = `
+                        ${BankApp_Legecy.Personal} <br>
+                        ${BankApp_Legecy.NRI}
+                    `;
+                    break;
+                case "ver2":
+                    document.querySelector("#features").innerHTML = `
+                        ${BankApp_modern.Personal} <br>
+                        ${BankApp_modern.NRI} <br>
+                        ${BankApp_modern.Loans}
+                    `;
+                    break;
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    Select Bank App Version:
+    <select>
+        <option value="ver1">Version-1</option>
+        <option value="ver2">Version-2</option>
+    </select>
+    <button onclick="GetFeatures()">Install</button>
+
+    <div id="features"></div>
+
+</body>
+
+</html>
