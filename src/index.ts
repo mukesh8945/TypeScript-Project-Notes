@@ -112,7 +112,6 @@
 
 // 4. Pollymorphism
 
-<<<<<<< HEAD
 class Employee {
   public FirstName: string = "";
   public LastName: string = "";
@@ -158,7 +157,7 @@ class Manager extends Employee {
 }
 
 let employees = [new Developer(), new Admin(), new Manager()];
-=======
+
 // class Employee {
 //   public FirstName: string = "";
 //   public LastName: string = "";
@@ -336,4 +335,3 @@ const enum Values {
 }
 
 console.log(`Addition=${Values.c}`);
->>>>>>> bf0bb76 (first commit)
