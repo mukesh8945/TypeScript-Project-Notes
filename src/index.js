@@ -3,6 +3,7 @@
 //   Personal: String;
 //   NRI: string;
 // }
+<<<<<<< HEAD
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -171,3 +172,98 @@ var Manager = /** @class */ (function (_super) {
     return Manager;
 }(Employee));
 var employees = [new Developer(), new Admin(), new Manager()];
+=======
+var Database = /** @class */ (function () {
+    function Database() {
+        this.ConnectionString = null;
+    }
+    Database.prototype.Connect = function () {
+        for (var property in this.ConnectionString) {
+            console.log("".concat(property, ":").concat(this.ConnectionString[property]));
+        }
+    };
+    return Database;
+}());
+console.log("--------Connecting with Oracle---------");
+var oracle = new Database();
+oracle.ConnectionString = {
+    UserName: "scot",
+    Password: "tiger",
+    Database: "empdb",
+};
+oracle.Connect();
+console.log("-------Connecting with MySql---------");
+var mysql = new Database();
+mysql.ConnectionString = {
+    host: "localhost",
+    user: "root",
+    password: "1234",
+    database: "studb",
+};
+mysql.Connect();
+console.log("-----Connecting with mongoDB--------");
+var mongo = new Database();
+mongo.ConnectionString = {
+    url: "mongodb://127.0.0.1:27017",
+};
+mongo.Connect();
+var Service = /** @class */ (function () {
+    function Service() {
+    }
+    Service.prototype.GetData = function (data) {
+        console.log(data);
+    };
+    return Service;
+}());
+var tv = new Service();
+tv.GetData({ Name: "TV", Price: 35000, Stock: true });
+tv.GetData([{ Name: "Mobile", Price: 34000, Stock: true }]);
+// 7. Generic----3--------
+function Sum(a, b) {
+    return a + b;
+}
+var Demo = /** @class */ (function () {
+    function Demo() {
+    }
+    Demo.prototype.Add = function (a, b) {
+        return Sum(a, b);
+    };
+    return Demo;
+}());
+var obj = new Demo();
+obj.Add(10, 20);
+obj.Add("A", "B");
+//6---------ENUM---------
+var Weekday;
+(function (Weekday) {
+    Weekday[Weekday["Sunday"] = 0] = "Sunday";
+    Weekday[Weekday["Monday"] = 1] = "Monday";
+    Weekday[Weekday["Tue"] = 2] = "Tue";
+    Weekday[Weekday["Wed"] = 3] = "Wed";
+    Weekday[Weekday["Thu"] = 4] = "Thu";
+    Weekday[Weekday["fri"] = 5] = "fri";
+    Weekday[Weekday["Sat"] = 6] = "Sat";
+})(Weekday || (Weekday = {}));
+var Months;
+(function (Months) {
+    Months[Months["Jan"] = 0] = "Jan";
+    Months[Months["Feb"] = 1] = "Feb";
+    Months[Months["Mar"] = 2] = "Mar";
+    Months[Months["Apr"] = 3] = "Apr";
+    Months[Months["May"] = 4] = "May";
+    Months[Months["Jun"] = 5] = "Jun";
+    Months[Months["Jul"] = 6] = "Jul";
+    Months[Months["Aug"] = 7] = "Aug";
+    Months[Months["Sep"] = 8] = "Sep";
+    Months[Months["Oct"] = 9] = "Oct";
+    Months[Months["Nov"] = 10] = "Nov";
+    Months[Months["Dec"] = 11] = "Dec";
+})(Months || (Months = {}));
+var now = new Date();
+console.log("\n  Month: ".concat(Months[now.getMonth()], " \n\n  Weekday: ").concat(Weekday[now.getDay()], " \n\n  "));
+var Values;
+(function (Values) {
+    Values[Values["A"] = 0] = "A";
+    Values["B"] = "Hello ! ";
+})(Values || (Values = {}));
+>>>>>>> bf0bb76 (first commit)

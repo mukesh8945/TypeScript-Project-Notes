@@ -112,6 +112,7 @@
 
 // 4. Pollymorphism
 
+<<<<<<< HEAD
 class Employee {
   public FirstName: string = "";
   public LastName: string = "";
@@ -157,3 +158,182 @@ class Manager extends Employee {
 }
 
 let employees = [new Developer(), new Admin(), new Manager()];
+=======
+// class Employee {
+//   public FirstName: string = "";
+//   public LastName: string = "";
+//   public Designation: string = "";
+//   public Print(): void {
+//     document.write(
+//       `${this.FirstName} - ${this.LastName} - ${this.Designation}`
+//     );
+//   }
+// }
+
+// class Developer extends Employee {
+//   FirstName = "Kiran";
+//   LastName = "Kumar";
+//   Designation = "Developer";
+//   DeveloperRole = "Build, Debug, Test, Deploy";
+//   Print() {
+//     super.Print();
+//     document.write(this.DeveloperRole);
+//   }
+// }
+
+// class Admin extends Employee {
+//   FirstName = "Raj";
+//   LastName = "Kiran";
+//   Designation = "Admin";
+//   AdminRole = "Authorizations/Authentication";
+//   Print() {
+//     super.Print();
+//     document.write(this.AdminRole);
+//   }
+// }
+
+// class Manager extends Employee {
+//   FirstName = "Tom";
+//   LastName = "Hanks";
+//   Designation = "Manager";
+//   ManagerRole = "Approvals";
+//   Print() {
+//     super.Print();
+//     document.write(this.ManagerRole);
+//   }
+// }
+
+// let employees = [new Developer(), new Admin(), new Manager()];
+
+// 5. -------Generics------------
+
+interface IOracle {
+  UserName: string;
+  Password: string;
+  Database: string;
+}
+
+interface IMySql {
+  host: string;
+  user: string;
+  password: string;
+  database: string;
+}
+
+interface IMongoDb {
+  url: string;
+}
+
+class Database<T> {
+  public ConnectionString: T | null = null;
+  public Connect() {
+    for (var property in this.ConnectionString) {
+      console.log(`${property}:${this.ConnectionString[property]}`);
+    }
+  }
+}
+
+console.log(`--------Connecting with Oracle---------`);
+let oracle = new Database<IOracle>();
+oracle.ConnectionString = {
+  UserName: "scot",
+  Password: "tiger",
+  Database: "empdb",
+};
+oracle.Connect();
+
+console.log(`-------Connecting with MySql---------`);
+let mysql = new Database<IMySql>();
+mysql.ConnectionString = {
+  host: "localhost",
+  user: "root",
+  password: "1234",
+  database: "studb",
+};
+
+mysql.Connect();
+
+console.log(`-----Connecting with mongoDB--------`);
+let mongo = new Database<IMongoDb>();
+mongo.ConnectionString = {
+  url: "mongodb://127.0.0.1:27017",
+};
+mongo.Connect();
+
+// 6......Generics-----2
+interface IProduct {
+  Name: string;
+  Price: number;
+  Stock: boolean;
+}
+
+interface IEmployee {
+  FirstName: string;
+  LastName: string;
+  Designation: string;
+}
+
+class Service {
+  public GetData<T>(data: T) {
+    console.log(data);
+  }
+}
+let tv = new Service();
+tv.GetData<IProduct>({ Name: "TV", Price: 35000, Stock: true });
+tv.GetData<IProduct[]>([{ Name: "Mobile", Price: 34000, Stock: true }]);
+
+// 7. Generic----3--------
+
+function Sum(a: any, b: any) {
+  return a + b;
+}
+
+class Demo {
+  public Add<T>(a: T, b: T): T {
+    return Sum(a, b);
+  }
+}
+let obj = new Demo();
+obj.Add<number>(10, 20);
+obj.Add<string>("A", "B");
+
+//6---------ENUM---------
+enum Weekday {
+  Sunday,
+  Monday,
+  Tue,
+  Wed,
+  Thu,
+  fri,
+  Sat,
+}
+enum Months {
+  Jan,
+  Feb,
+  Mar,
+  Apr,
+  May,
+  Jun,
+  Jul,
+  Aug,
+  Sep,
+  Oct,
+  Nov,
+  Dec,
+}
+let now: any = new Date();
+console.log(
+  `
+  Month: ${Months[now.getMonth()]} \n
+  Weekday: ${Weekday[now.getDay()]} \n
+  `
+);
+
+const enum Values {
+  a = 10,
+  b = 20,
+  c = a + b,
+}
+
+console.log(`Addition=${Values.c}`);
+>>>>>>> bf0bb76 (first commit)
